@@ -1,4 +1,4 @@
-program perpertual_dex.aleo {
+program alewa_14985.aleo {
     // A token, issued by a bank.
     // - 'owner'  : The address of the account that owns the record associated with this token.
     // - 'amount' : The amount of tokens owned by the account.
@@ -17,7 +17,7 @@ program perpertual_dex.aleo {
     // Requires that the function caller is the bank.
     // The bank's address is aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px.
     transition issue(owner: address, amount: u64) -> Token {
-        assert_eq(self.caller, aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px);
+        assert_eq(self.caller, aleo1y4z6v2e2sgfsufeu7y36mhg3fr73s8lq02tv8xlrq99fa3v79urqrretcg);
         return Token {
             owner: owner,
             amount: amount,
@@ -57,7 +57,7 @@ program perpertual_dex.aleo {
     // - `periods`  : The number of periods to compound the interest over.
     // Requires that the function caller is the bank.
     async transition withdraw(recipient: address, amount: u64, rate: u64, periods: u64) -> (Token, Future) {
-        assert_eq(self.caller, aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px);
+        assert_eq(self.caller, aleo1y4z6v2e2sgfsufeu7y36mhg3fr73s8lq02tv8xlrq99fa3v79urqrretcg);
         let hash: field = BHP256::hash_to_field(recipient);
 
         let total: u64 = calculate_interest(amount, rate, periods);
